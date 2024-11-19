@@ -1,0 +1,14 @@
+diff --git a/circuit analyzer.cpp b/circuit analyzer.cpp
+--- circuit analyzer.cpp
++++ circuit analyzer.cpp
+@@ -9,9 +9,9 @@
+     int equ_R = 0;
+     int i = start;
+     for (; i < circuit.size(); ++i){
+ 
+-        // check for the 
++        // check for the next connection
+         if(1/*to be written*/);
+ 
+         //check for the end of connection "e"
+         else if (circuit.at(i) == "e"){

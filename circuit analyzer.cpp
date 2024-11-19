@@ -10,7 +10,7 @@ int* Handle(char connection, vector<string> circuit, int start){
     int i = start;
     for (; i < circuit.size(); ++i){
 
-        // check for the 
+        // check for the next connection
         if(1/*to be written*/);
 
         //check for the end of connection "e"
