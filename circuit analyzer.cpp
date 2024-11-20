@@ -4,27 +4,33 @@
 
 using namespace std;
 
+int itr = 1;
+
 // the possible values of circuit vector is only ("p" or "s" or "e" or string as double)
-int* Handle(char connection, vector<string> circuit, int start){
-    int equ_R = 0;
-    int i = start;
-    for (; i < circuit.size(); ++i){
+double Handle(string connection, vector<string> circuit){
+    double equ_R = 0;
+    for (; itr < circuit.size(); ++itr){
 
         // check for the next connection
-        if(1/*to be written*/);
+        if (circuit.at(itr) == "p" || circuit.at(itr) == "s"){
+            double temp = Handle(circuit.at(itr++), circuit);
+            if (connection == "p")
+                equ_R += 1/temp;
+            else 
+                equ_R += temp;
+        }
 
         //check for the end of connection "e"
-        else if (circuit.at(i) == "e"){
-            if (connection == 'p')
+        else if (circuit.at(itr) == "e"){
+            if (connection == "p")
                 equ_R = 1/equ_R;
-            int result[2] = {equ_R, i};
-            return result;
+            return equ_R;
         }
 
         // check for the double and calculate according to the connection
         else{
-            double x = stod(circuit.at(i));
-            if (connection == 'p')
+            double x = stod(circuit.at(itr));
+            if (connection == "p")
                 equ_R += 1/x;
             else
                 equ_R += x;
@@ -71,5 +77,6 @@ int main(){
                 }
         }
     }
-    cout << Handle(circuit_in[0], circuit, 0);
+    double result = Handle(circuit.at(0), circuit);
+    cout << result;
 }
